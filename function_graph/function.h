@@ -5,6 +5,8 @@
 #ifndef LAB_5_6_FUNCTION_H
 #define LAB_5_6_FUNCTION_H
 
+#include <list>
+
 
 
 
