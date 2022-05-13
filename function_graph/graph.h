@@ -61,10 +61,16 @@ private:
         }*/
     }
 
-    std::array<int, number_of_vertices> &operator[](int i) {
-        return tridentity_matrix.at(i);
+    int & operator()(uint i,uint  j) {
+        mass_E.push_back({i, j});
+        std::cout<<i<<j<<std::endl;
+        return tridentity_matrix.at(i).at(j);
     }
 
+
+    int & operator[](int i) {
+        return tridentity_matrix.at(i);
+    }
     int find_num_min_el(std::array<int, number_of_vertices> &arr, std::bitset<number_of_vertices> &vis) {
         int num_min = -1;
         for (int i = 0; i < number_of_vertices; ++i) {
@@ -189,18 +195,24 @@ public:
     }
 
     graph<number_of_vertices> kruskal() {
-        auto own_peaks = std::bitset<number_of_vertices>(0);
+
+        auto own_peaks = std::array<int,number_of_vertices>();
         auto res_graph = graph<number_of_vertices>();
 
         std::sort(mass_E.begin(), mass_E.end(),
-                  [this](std::pair<int, int> &a, std::pair<int, int> &b) {
+                  [this](std::pair<uint, uint> &a, std::pair<uint, uint> &b) {
                       return tridentity_matrix[a.first][a.second] < tridentity_matrix[b.first][b.second];
                   }
         );
 
-        for (std::pair<int, int> i: mass_E) {
+        for (int i = 0; i < number_of_vertices; ++i) {
+            own_peaks.at(i)=i;
+        }
+
+        for (std::pair<uint, uint> i: mass_E) {
             if (own_peaks[i.first] != own_peaks[i.second]) {
-                res_graph[i.first][i.second] = tridentity_matrix[i.first][i.second];
+                std::cout << i.first<<i.second<<std::endl;
+                res_graph(i.first,i.second) = tridentity_matrix[i.first][i.second];
                 int temp = own_peaks[i.first];
                 for (int j = 0; j < number_of_vertices; ++j) {
                     if (own_peaks[j] == temp)
@@ -261,7 +273,7 @@ public:
 
 
 private:
-    std::vector<std::pair<int, int>> mass_E;
+    std::vector<std::pair<uint, uint>> mass_E;
     _matrix tridentity_matrix;
 };
 
