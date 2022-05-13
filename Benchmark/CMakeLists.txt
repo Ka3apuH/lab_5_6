@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 
 project(lab_5_6_BENCHMARK)
 
-set(MAIN_BENCHMARK_TEST)
+set(MAIN_BENCHMARK_TEST graph_fun_benchmark.h graph_fun_benchmark.cpp)
 
 include(FetchContent)
 
@@ -30,7 +30,7 @@ set_target_properties(
 target_include_directories(
         ${PROJECT_NAME}
         PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/../priority_queue
+        ${CMAKE_CURRENT_SOURCE_DIR}/../function_graph
 )
 
 target_link_libraries(
@@ -50,8 +50,8 @@ else()
 endif()
 
 
-install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_HOME_DIRECTORY}/lab_1/benchmark)
-install(FILES ${MAIN_BENCHMARK_TEST} DESTINATION ${CMAKE_HOME_DIRECTORY}/lab_1/benchmark )
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_HOME_DIRECTORY}/lab_5_6/benchmark)
+install(FILES ${MAIN_BENCHMARK_TEST} DESTINATION ${CMAKE_HOME_DIRECTORY}/lab_5_6/benchmark )
 
 #set(CPACK_GENERATOR "DEB")
 #include(CPack)

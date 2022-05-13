@@ -6,8 +6,8 @@
 #define LAB1_TESTING_MAIN_FUNC_PRIORITY_QUEUE_H
 
 #include <gtest/gtest.h>
-#include "priority_queue.h"
-#include <queue>
+#include <random>
+#include "../function_graph/graph.h"
 
 
 class Testing_main_func_priority_queue : public ::testing::Test {
@@ -15,13 +15,11 @@ protected:
     void SetUp() override {
 
     }
-    void TearDown() override {
-        test_heap.clear();
+    void TearDown() override{
     }
 
 // объекты тестового окружения, доступные в каждом тесте
-    std::priority_queue<unsigned int> real_heap;
-    h_work::priority_queue<unsigned int> test_heap;
+    h_work::graph<10> graph;
     std::random_device randomDevice;
 };
 

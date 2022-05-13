@@ -2,9 +2,10 @@ cmake_minimum_required(VERSION 3.5)
 
 project(lab_5_6_TEST)
 
-set(MAIN_TEST)
+set(MAIN_TEST graph_fun_TEST.cpp graph_fun_TEST.h)
 
 include(FetchContent)
+
 FetchContent_Declare(
         googletest
         GIT_REPOSITORY https://github.com/google/googletest.git
@@ -27,7 +28,7 @@ set_target_properties(
 target_include_directories(
         ${PROJECT_NAME}
         PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/../priority_queue
+        ${CMAKE_CURRENT_SOURCE_DIR}/../function_graph
 )
 
 target_link_libraries(

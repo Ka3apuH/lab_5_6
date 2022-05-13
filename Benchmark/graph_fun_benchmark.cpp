@@ -5,7 +5,7 @@
 #include <random>
 
 #include "benchmark/benchmark.h"
-#include "priority_queue.h"
+#include "../function_graph/function.h"
 #include "graph_fun_benchmark.h"
 
 

@@ -36,9 +36,12 @@ public:
         }
     }
 
+    graph(_matrix& matrix):tridentity_matrix(std::move(matrix)){};
+
+
 private:
-    void recursion_dfs(std::bitset<number_of_vertices> &visited, int x, std::list<int> &res) {
-        res.push_back(x);
+    void recursion_dfs(std::bitset<number_of_vertices> &visited, int x, std::stack<int> &res) {
+        res.push(x);
         visited.set(x);
         for (int y: tridentity_matrix[x]) {
             if (y != 0 && !visited.test(y))recursion_dfs(visited, y, res);
@@ -86,9 +89,9 @@ private:
     }
 
 public:
-    std::list<int> dfs(int num_first_peak) {
+    std::stack<int> dfs(int num_first_peak) {
         auto visited = std::bitset<number_of_vertices>(0);
-        auto result = std::list<int>();
+        auto result = std::stack<int>();
 
         recursion_dfs(visited, num_first_peak, result);
 
@@ -213,12 +216,51 @@ public:
 
         auto result = std::stack<int>();
 
-        for (int i = 0; i < ; ++i) {
-            
+        for (int x = 0; x < number_of_vertices; ++x) {
+            if (!visit.test(x))recursion_dfs_inv(visit, x, result);
         }
-        recursion_dfs_inv(visit, num_first_peak, result);
-
         return result;
+    }
+
+    std::stack<std::stack<int>> kosaraiyo(){
+        auto visit = std::bitset<number_of_vertices>(0);
+
+        auto result = std::stack<std::stack<int>>();
+
+        //для G^T
+
+        _matrix T_mat;
+
+        for (int i = 0; i <number_of_vertices ; ++i) {
+            for (int j = 0; j < number_of_vertices; ++j) {
+                T_mat[j][j]=tridentity_matrix[i][j];
+            }
+        }
+
+        auto T_graph=graph<number_of_vertices>(T_mat);
+
+        for (int v = 0; v < number_of_vertices; ++v) {
+            std::stack<int> temp;
+            if(!visit.test(v)){
+                (T_graph.recursion_dfs_inv(visit,v,temp));
+                result.push(temp);
+            }
+        }
+
+        for (int v = 0; v < number_of_vertices; ++v) {
+            if(!visit.test(v)){
+                while (!result.empty()){
+                    v=result.top().top();
+                    result.top().pop();
+                    if(!visit.test(v))recursion_dfs();
+                }
+            }
+        }
+
+
+
+
+
     }
 
 

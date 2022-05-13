@@ -8,7 +8,8 @@
 
 #include <random>
 #include "benchmark/benchmark.h"
-#include "priority_queue.h"
+#include "../function_graph/graph.h"
+
 
 class benchmark_priority_queue_fix: public benchmark::Fixture{
 
@@ -27,7 +28,7 @@ public:
 
 
 protected:
-    h_work::priority_queue<unsigned int> pr_heap;
+    h_work::graph<10> graph;
     std::random_device randomDevice;
 };
 
