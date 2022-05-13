@@ -5,7 +5,7 @@
 
 #include <random>
 
-#include "testing_main_func_priority_queue.h"
+#include "graph_fun_TEST.h"
 
 using namespace h_work;
 using namespace std;

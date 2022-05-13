@@ -6,7 +6,7 @@
 
 #include "benchmark/benchmark.h"
 #include "priority_queue.h"
-#include "benchmark_priority_queue.h"
+#include "graph_fun_benchmark.h"
 
 
 BENCHMARK_DEFINE_F(benchmark_priority_queue_fix,BM_priority_queue_add_elements) (benchmark::State& state) {

@@ -1,51 +1,52 @@
 
-###Задача:
-реализовать контейнер-адаптер `priority_queue`. Принцип работы очереди:
-первым извлекается наибольший элемент. Контейнер должен
-обеспечивать логарифмическое время работы для добавления и удаления элемента.
+### Задача:
+реализовать следующие функции для работы с графами:
+ 
+1. поиск в глубину; 
+2. поиск в ширину; 
+3. алгоритм Дейкстры; 
+4. алгоритм Крускала; 
+5. алгоритм Прима; 
+6. алгоритм Флойда-Уоршалла; 
+7. алгоритм Тарьяна для топологической сортировки; 
+8. алгоритм Флёри; 
+9. алгоритм поиска эйлерова цикла на основе объединения циклов; 
+10. алгоритм Косарайю.
 
-###реализуемый класс очереди:
-[`priority_queue`](priority_queue/priority_queue.h) находится в
-<pre>$PROJECT_DIR$/priority_queue/priority_queue.h</pre>
 
-###тестирование класса:
-тестирование данного класса : [`lab1_priority_queue_TEST`](test/priority_queue_TEST.cpp) находится в
-<pre> $PROJECT_DIR$/test/priority_queue_TEST.cpp </pre>
+
+### реализуемый класс графа:
+[`graph`](function_graph/graph.h) находится в
+<pre>$PROJECT_DIR$/function_graph/graph.</pre>
+
+### тестирование класса:
+тестирование данного класса : [`graph_fun_TEST`](test/graph_fun_TEST.cpp) находится в
+<pre> $PROJECT_DIR$/test/graph_fun_TEST.cpp </pre>
 
 Для запуска тестирования данного класса неоходимо выполнить следующее:
 
-####собрать проект
+#### собрать проект
 ```bash
 $ mkdir build
 $ cd build/
 $ cmake ..
 $ make 
 ```
-####запустить тестирование
+#### запустить тестирование
 ```bash
-./test/lab1_priority_queue_TEST
+./test/lab_5_6_TEST
 ```
-![alt text](images/Снимок%20экрана%20от%202022-02-24%2005-40-34.png "Описание будет тут")
-###banchmark метода класса `add_element`:
 
-banchmark : [`lab1_priority_queue_BENCHMARK`](Benchmark/benchmark_priority_queue.cpp) находится в
-<pre> $PROJECT_DIR$/Benchmark/benchmark_priority_queue.cpp </pre>
+banchmark : [`graph_fun_BENCHMARK`](Benchmark/graph_fun_benchmark.cpp) находится в
+<pre> $PROJECT_DIR$/Benchmark/graph_fun_benchmark.cpp </pre>
 
 Для запуска banchmark метода данного класса неоходимо выполнить следующее:
 
-####собрать проект
+#### собрать проект
 ```bash
 $...
 ```
 ####запустить banchmark
 ```bash
-./Benchmark/lab1_priority_queue_BENCHMARK
+./Benchmark/lab_5_6_BENCHMARK
 ```
-
-![alt text](images/Снимок%20экрана%20от%202022-02-24%2005-47-46.png "Описание будет тут")
-Как можно заметить на данном скрине добавление элемента очень сильно приближенно к сложности 
-
-`O(ln N)`
-
- причем это добавление сразу `N` элементов (пока не придумал как проверить добавление сразу к заполненной очереди добавить 1 элемент)
-и при этом логприфмическая сложность на 93%
